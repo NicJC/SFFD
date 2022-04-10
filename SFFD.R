@@ -18,8 +18,12 @@ SFFD
 df<- SFFD %>% rename(Zipcode = 'Zipcode of Incident',Response_Time = 'On Scene DtTm', Neighborhood = 'Neighborhooods - Analysis Boundaries', Priority = 'Final Priority') %>%
   mutate(Year = substring(SFFD$`Call Date`,7,10),Month = substring(SFFD$`Call Date`,1,2), Day = substring(SFFD$`Call Date`,4,5) ) %>%
   arrange(desc(Year), desc(Month), desc(Day)) %>%
-  filter(Year >= 2021)
+  filter(Year > 2021)
 
 write.csv( df,"San Francisco Fire Dept.csv",row.names=FALSE)
+
+ggplot(data, aes(y = Neighborhood ,  x = Battalion, color = Priority)) + geom_point()  + labs(title = "San Francisco Fire Dept")
+
+ggsave("San Francisco Fire Dept.png", width = 7, height = 7)
 
 
