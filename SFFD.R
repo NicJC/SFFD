@@ -17,7 +17,8 @@ SFFD
 
 df<- SFFD %>% rename(Zipcode = 'Zipcode of Incident',Response_Time = 'On Scene DtTm', Neighborhood = 'Neighborhooods - Analysis Boundaries', Priority = 'Final Priority') %>%
   mutate(Year = substring(SFFD$`Call Date`,7,10),Month = substring(SFFD$`Call Date`,1,2), Day = substring(SFFD$`Call Date`,4,5) ) %>%
-  arrange(desc(Year), desc(Month), desc(Day))
+  arrange(desc(Year), desc(Month), desc(Day)) %>%
+  filter(Year == 2022)
 
 write.csv( df,"San Francisco Fire Dept.csv",row.names=FALSE)
 
