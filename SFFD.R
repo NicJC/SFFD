@@ -22,8 +22,8 @@ df<- SFFD %>% rename(Zipcode = 'Zipcode of Incident',Response_Time = 'On Scene D
 
 write.csv( df,"San Francisco Fire Dept.csv",row.names=FALSE)
 
-ggplot(data, aes(y = Neighborhood ,  x = Battalion, color = Priority)) + geom_point()  + labs(title = "San Francisco Fire Dept")
+ggplot(df, aes(y = Neighborhood ,  x = Battalion, color = Priority)) + geom_point()  + labs(title = "San Francisco Fire Dept")
 
-ggsave("San Francisco Fire Dept.png", width = 7, height = 7)
+ggsave("San Francisco Fire Dept.png", width = 8, height = 8)
 
 
